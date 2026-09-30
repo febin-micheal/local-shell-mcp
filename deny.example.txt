@@ -1,0 +1,15 @@
+# local-shell-mcp deny list: one Python regular expression per line; a matching command is refused.
+# A guard rail against mistakes, not a sandbox.
+
+# privilege escalation
+\bsudo\b
+\bsu\s+-
+
+# wiping the disk or home directory
+\brm\s+-[a-zA-Z]*r[a-zA-Z]*f?\s+(/|~|\$HOME)\s*($|;|&)
+\bmkfs(\.|\s)
+\bdd\s+.*\bof=/dev/
+
+# production hosts (replace with your own)
+# ssh\s+.*prod\.example\.com
+# 203\.0\.113\.10
