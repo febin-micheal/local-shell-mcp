@@ -11,10 +11,43 @@ local MCP servers configured in that desktop app. Add this one, and the chat can
 your machine: read and edit files, run tests, use `git`, `ssh`, your CLIs — while keeping the whole
 conversation's context.
 
-- No copy-pasting commands into a terminal and pasting output back.
-- No switching to a separate coding tool for small jobs.
-- Works from the phone app too: the chat runs in the cloud and reaches your computer through the
+### Less work for you
+
+- **Less babysitting.** Claude runs the command and reads the result itself. No "run this, paste
+  the output back" loop.
+- **No leaving the chat.** No switching to a terminal or a separate coding tool for small jobs.
+- **Works from your phone.** The chat runs in the cloud and reaches your computer through the
   desktop app.
+- **Reaches beyond your computer.** It uses your own SSH keys, so a teammate's machine or a server
+  is one `ssh` away.
+
+### Better answers
+
+- **Works from facts, not guesses.** Claude checks the real file, version or error instead of
+  assuming what is there.
+- **Checks its own fix.** It re-runs the failing command or the tests straight after the change.
+- **Catches wrong assumptions early.** A quick `ls` or `grep` before acting beats a plan built on
+  a wrong guess.
+
+### Cheaper and faster
+
+- **Fewer tokens.** No pasted commands and outputs piling up in the conversation.
+- **Fewer turns.** One message from you instead of five.
+- **Lighter than a coding agent for small jobs.** No new session and no re-explaining the context.
+
+### Simple to set up, easy to control
+
+- **One file, no dependencies.** Just `bash` and Python 3.8+.
+- **Your own permissions only.** It cannot do anything you cannot already do in your terminal.
+- **Guard rails.** A deny list refuses commands you never want run, and a log records every
+  command, run or refused.
+- **Bounded output.** Output is cut off at a set size, so one huge log cannot flood the chat.
+
+### Example
+
+A build failed on a teammate's laptop. One message in the chat, and Claude found the earlier fix,
+checked it was safe to reuse, applied it over `ssh`, ran the deploy in the background, and
+confirmed it passed — in about two minutes, with no commands pasted back and forth.
 
 ## Requirements
 
